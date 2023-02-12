@@ -10,4 +10,9 @@ Rails.application.routes.draw do
   post '/login', to: 'user#sign_in'
 
   delete '/logout', to: 'user#destroy'
+  
+  post '/messages', to: 'messages#create'
+
+  mount ActionCable.server, at: '/cable'
+  
 end
