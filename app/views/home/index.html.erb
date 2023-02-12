@@ -30,7 +30,7 @@
       </div>
       <%= render 'messages/messages'%>
       <div class='chat-box-input p-3 border-top border-1 d-flex'>
-        <%= form_with model: @message do |form|%>
+        <%= form_with model: current_user.messages.new do |form|%>
           <%= form.text_field :content%>
           <%= form.submit 'Send'%>
         <%end%>
