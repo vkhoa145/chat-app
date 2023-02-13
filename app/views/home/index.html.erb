@@ -28,7 +28,9 @@
         <p class='fs-6 fw-bold'>Chat box name</p>
         <p class='fs-6 fw-bold'>2 member</p>
       </div>
-      <%= render 'messages/messages'%>
+      <div class='chat-box-view p-2'>
+        <%= render partial:"messages/messages", collection: @messages%>
+      </div>
       <div class='chat-box-input p-3 border-top border-1 d-flex'>
         <%= form_with model: current_user.messages.new do |form|%>
           <%= form.text_field :content%>

@@ -53,7 +53,7 @@
   .chat-box-view {
     height: 80vh;
     background-color: whitesmoke;
-    overflow: scroll;
+    overflow-y: scroll;
     .message {
       color: white;
       height: fit-content;
