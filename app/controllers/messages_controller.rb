@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
     @message = current_user.messages.new(message_params)
     if @message.save!
       
-      ActionCable.server.broadcast "chat_channel", { message: @message.content }
+      ActionCable.server.broadcast "chat_channel", { message: message_render(@message) }
     end
 
   end
@@ -17,5 +17,9 @@ class MessagesController < ApplicationController
 
   def message_params
     params.require(:message).permit(:content, :user_id)
+  end
+
+  def message_render(message)
+    render(partial: 'messages/messages', locals: {message: message})
   end
 end
