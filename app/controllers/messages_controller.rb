@@ -20,6 +20,6 @@ class MessagesController < ApplicationController
   end
 
   def message_render(message)
-    render(partial: 'messages/messages', locals: {message: message})
+    render partials: 'messages', locals: { message: message}
   end
 end
