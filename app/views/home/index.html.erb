@@ -1,42 +1,5 @@
-<div class='container-fluid main-wrapper'>
-  <div class='row main-wrapper'>
-    <div class='col-2 border-end border-1'>
-      <ul class="nav flex-column main-wrapper">
-        <li class="nav-item form-section border-bottom border-1 position-relative">
-          <div class='row container-fluid position-absolute top-50 start-50 translate-middle'>
-            <div class="mb-3">
-              <label for="createChatRoom" class="form-label">Add a new room</label>
-              <input type="text" class="form-control" id="createChatRoom" placeholder="Create chat room..">
-            </div>
-            <div class='container-fluid'>
-              <button type="submit" id='addButton' class="btn btn-outline-primary mb-3 add-button">Add</button>
-            </div>
-          </div>
-        </li>
-        <div class="nav-item user-appearance flex-column ">
-          <div class='user-chat-wrapper p-3 position-relative'>
-            <div class='container-fluid position-absolute top-50 start-50 translate-middle'>
-              <p class='fs-5 fw-bold mb-0'>Name</p>
-              <p class='fs-6 fw-light mb-0'>Status</p>
-            </div>
-          </div>
-        </div>
-      </ul>
-    </div>
-    <div class='container-fluid col-10 chat-box flex-column'>
-      <div class='chat-box-info d-flex justify-content-between border-bottom border-1 align-items-center'>
-        <p class='fs-6 fw-bold'>Chat box name</p>
-        <p class='fs-6 fw-bold'>2 member</p>
-      </div>
-      <div class='chat-box-view p-2'>
-        <%= render partial:"messages/messages", collection: @messages %>
-      </div>
-      <div class='chat-box-input p-3 border-top border-1 d-flex'>
-        <%= form_with model: current_user.messages.new do |form|%>
-          <%= form.text_field :content%>
-          <%= form.submit 'Send'%>
-        <%end%>
-      </div>
-    </div>
-  </div>
-</div>
+<% if logged_in? %>
+  <%= render partial: 'shared/chatroom'%>
+<% else %>
+  <%= render template: 'user/login'%>
+<% end %>
